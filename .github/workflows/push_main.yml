@@ -6,16 +6,19 @@ on: # yamllint disable-line rule:truthy
     branches:
       - main
 
+permissions:
+  contents: write
+
 jobs:
   release:
     name: "Release to GitHub"
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repo
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
 
@@ -24,5 +27,5 @@ jobs:
 
       - name: Release Version
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: npx semantic-release@22.0.12
