@@ -1,0 +1,112 @@
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/inter";
+@import "@fontsource/ibm-plex-mono/400.css";
+@import "@fontsource/ibm-plex-mono/500.css";
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Snowfield / basalt palette. Cool green-tinted neutrals from the mountain
+     itself; glacier blue for interaction; one warm alpenglow note reserved
+     for the live indicator. */
+  --color-snowfield: #f5f7f4;
+  --color-snowfield-2: #ecefe9;
+  --color-basalt: #141b17;
+  --color-basalt-2: #1c2620;
+  --color-ink: #1a2420;
+  --color-ink-2: #4c5b53;
+  --color-mist: #8fa096;
+  --color-hairline: #d8ded6;
+  --color-hairline-dark: #2c3a32;
+  --color-glacier: #2a78d6;
+  --color-glacier-bright: #3987e5;
+  --color-alpenglow: #d95926;
+  --color-alpenglow-bright: #eb6834;
+
+  --font-display: "Fraunces Variable", "Georgia", serif;
+  --font-sans: "Inter Variable", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  :root {
+    --bg: var(--color-snowfield);
+    --bg-2: var(--color-snowfield-2);
+    --fg: var(--color-ink);
+    --fg-2: var(--color-ink-2);
+    --muted: var(--color-mist);
+    --line: var(--color-hairline);
+    --accent: var(--color-glacier);
+    --live: var(--color-alpenglow);
+    --chart-1: #2a78d6;
+    --chart-2: #eb6834;
+    --chart-3: #1baf7a;
+  }
+
+  .dark {
+    --bg: var(--color-basalt);
+    --bg-2: var(--color-basalt-2);
+    --fg: #e8ede8;
+    --fg-2: #a7b5ac;
+    --muted: #6b7a71;
+    --line: var(--color-hairline-dark);
+    --accent: var(--color-glacier-bright);
+    --live: var(--color-alpenglow-bright);
+    --chart-1: #3987e5;
+    --chart-2: #d95926;
+    --chart-3: #199e70;
+  }
+
+  html {
+    background-color: var(--bg);
+    color-scheme: light;
+  }
+
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--accent);
+    color: var(--bg);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+  }
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+  /* Logbook eyebrow: how every section announces itself. */
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+  }
+  .hairline {
+    border-color: var(--line);
+  }
+}
