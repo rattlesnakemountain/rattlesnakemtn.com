@@ -10,8 +10,10 @@ const TOKEN = import.meta.env.VITE_CF_BEACON_TOKEN;
 export function initAnalytics() {
   if (!TOKEN) return;
 
+  // Matches the snippet Cloudflare issues verbatim: a module script (deferred
+  // implicitly) carrying the token on data-cf-beacon.
   const script = document.createElement("script");
-  script.defer = true;
+  script.type = "module";
   script.src = "https://static.cloudflareinsights.com/beacon.min.js";
   script.dataset.cfBeacon = JSON.stringify({ token: TOKEN });
   document.head.appendChild(script);
