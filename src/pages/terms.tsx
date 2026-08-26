@@ -123,18 +123,26 @@ function Terms() {
         More frequent requests give you no new data.
       </P>
 
-      <H2>Content and source code</H2>
+      <H2>Source code</H2>
       <P>
-        The design, the text, and the images of the site, which include the
-        camera frames, belong to the operator of the site. The source code is in
-        the{" "}
+        The source code of the site is in the{" "}
         <A href="https://github.com/rattlesnakemountain/rattlesnakemtn.com">
           public repository
+        </A>
+        . The{" "}
+        <A href="https://github.com/rattlesnakemountain/rattlesnakemtn.com/blob/main/LICENSE">
+          MIT License
         </A>{" "}
-        of the site. The license that the repository states applies to the
-        source code. You can link to the site. You can show a camera frame if
-        you give credit to the site. Do not show the images or the data as your
-        own.
+        applies to the source code. The MIT License does not apply to the
+        content of the site.
+      </P>
+
+      <H2>Content</H2>
+      <P>
+        The design, the text, the icons, and the images, which include the
+        camera frames, belong to the operator of the site. You can link to the
+        site. You can show a camera frame if you give credit to the site. Do not
+        show the images or the data as your own.
       </P>
 
       <H2>Changes to these terms</H2>

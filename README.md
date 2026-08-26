@@ -40,6 +40,12 @@ Pages as-is.
 `/privacy/` and `/terms/` describe this behavior and must be kept honest if
 the analytics ever change.
 
+## License
+
+The [MIT License](LICENSE) covers the source code. It does not cover the site
+content — the text, the design, the icons, and the camera imagery — which stays
+with the site operator, as `/terms/` states.
+
 ## Development
 
 ```console

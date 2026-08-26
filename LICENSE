@@ -1,0 +1,55 @@
+MIT License
+
+Copyright (c) 2026 Michael Peters Jr.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+================================================================================
+
+SCOPE AND RESERVATION OF RIGHTS
+
+The foregoing MIT License applies solely to the software source code contained
+in this repository, and to no other subject matter.
+
+The foregoing MIT License does not grant any license to, and expressly
+excludes from its scope, the content of the site, including without limitation
+the textual content, the visual design, the layout, the typographic treatment,
+the icons and logos, and all photographic and video imagery, including any
+frame, still, composite, or derivative image produced by or from the
+Rattlesnake Mountain camera (collectively, the "Site Content"). All right,
+title, and interest in and to the Site Content, including all copyright
+therein, is expressly reserved to the copyright holder. Use of the Site
+Content is governed exclusively by the Terms of Use published at
+https://rattlesnakemtn.com/terms/.
+
+No trademark, service mark, or trade name rights are granted by the foregoing
+MIT License or by this notice. Nothing in this License grants permission to
+use the name "Rattlesnake Mountain" or "rattlesnakemtn.com", or any
+associated mark or logo, except as required for reasonable and customary use
+in describing the origin of the Software.
+
+Weather, forecast, and snowpack data retrieved at runtime from the National
+Weather Service, from the USDA Natural Resources Conservation Service, or from
+any other third-party source is not contained in this repository, is not
+covered by this License, and remains subject in all respects to the terms and
+conditions imposed by the issuing party.
+
+In the event of any conflict between this notice and the foregoing MIT
+License with respect to subject matter other than the Software, this notice
+controls.
