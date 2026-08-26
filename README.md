@@ -21,6 +21,31 @@ Pages — there is no server component.
 
 All four are fetched from the visitor's browser; the tower only ever uploads.
 
+## Analytics
+
+Page-view counting is [Cloudflare Web Analytics](https://www.cloudflare.com/web-analytics/):
+one cookieless beacon, no per-visitor identifier, aggregate page views,
+referrers and country only. It is opt-in at build time via
+`VITE_CF_BEACON_TOKEN` — unset (local dev, forks, PR previews) means the
+beacon is dead-code-eliminated and nothing is reported. Production gets the
+token from the `CF_BEACON_TOKEN` repository variable in
+`.github/workflows/deploy_pages.yml`.
+
+To wire it up: add the site in the Cloudflare dashboard under
+**Web Analytics**, copy the token out of the snippet it hands you, and set it
+as a repository variable (Settings → Secrets and variables → Actions →
+Variables). No Cloudflare DNS or proxying required — this works on GitHub
+Pages as-is.
+
+`/privacy/` and `/terms/` describe this behavior and must be kept honest if
+the analytics ever change.
+
+## License
+
+The [MIT License](LICENSE) covers the source code. It does not cover the site
+content — the text, the design, the icons, and the camera imagery — which stays
+with the site operator, as `/terms/` states.
+
 ## Development
 
 ```console
@@ -36,3 +61,7 @@ local infrastructure needed.
 Pushes to `main` build and deploy to GitHub Pages
 (`.github/workflows/deploy_pages.yml`). The custom domain is set by
 `public/CNAME`.
+
+The build has three entries — `index.html`, `privacy/index.html` and
+`terms/index.html` — so the legal pages ship as real static files at `/privacy/`
+and `/terms/`, with no single-page-app 404 fallback needed.
