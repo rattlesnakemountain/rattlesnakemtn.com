@@ -5,11 +5,6 @@ import { Section } from "./section";
 
 const CAM_HOST = "https://cam.rattlesnakemtn.com";
 
-// The still frame stands in until the visitor presses play: it is the same
-// view, already in cache from the camera above, and it keeps the box from
-// starting as a black rectangle.
-const POSTER = `${CAM_HOST}/latest-web.jpg`;
-
 type PeriodKey = "today" | "yesterday" | "weekly" | "monthly";
 type LightingKey = "all" | "daylight";
 
@@ -71,6 +66,14 @@ const LIGHTING_NOTE: Record<LightingKey, string> = {
 function clipUrl(period: Period, lighting: LightingKey): string {
   const daylight = period.hasLighting && lighting === "daylight";
   return `${CAM_HOST}/${period.stem}${daylight ? "-daylight" : ""}.mp4`;
+}
+
+// Nothing stands in for the clip: the still box shows the clip's own first
+// frame. Chrome and Firefox paint it from the metadata alone, and the `#t=`
+// fragment is what makes Safari do the same. A fragment never reaches the
+// server, so this costs no extra request.
+function posterFrameUrl(url: string): string {
+  return `${url}#t=0.1`;
 }
 
 // The camera host labels its own sizes on a 1024 divisor; match it so the
@@ -180,8 +183,7 @@ export function Timelapse() {
         ) : (
           <video
             key={url}
-            src={url}
-            poster={POSTER}
+            src={posterFrameUrl(url)}
             controls
             loop
             muted
