@@ -1,6 +1,7 @@
 import { useSnapshot } from "@/lib/snapshot";
 import { Header } from "@/components/header";
 import { Webcam } from "@/components/webcam";
+import { Timelapse } from "@/components/timelapse";
 import { Conditions } from "@/components/conditions";
 import { Trends } from "@/components/trends";
 import { SnotelSection } from "@/components/snotel-section";
@@ -14,6 +15,7 @@ export default function App() {
     <main className="min-h-screen pb-4">
       <Header />
       <Webcam />
+      <Timelapse />
       {error && snapshot === null ? (
         <section className="mx-auto w-full max-w-5xl px-5 pt-12">
           <p className="font-mono text-xs text-(--fg-2)">

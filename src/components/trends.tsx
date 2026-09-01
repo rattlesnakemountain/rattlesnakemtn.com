@@ -12,7 +12,7 @@ import {
 import { metricWindow, type Snapshot, type WindowName } from "@/lib/snapshot";
 import { cToF1, hPaToInHg, mmToInches, msToMph, seaLevelHPa } from "@/lib/units";
 import { dayHourLabel, dayLabel, hourLabel, relativeAge } from "@/lib/time";
-import { cn } from "@/lib/utils";
+import { Picker } from "./picker";
 import { Section } from "./section";
 
 interface MetricDef {
@@ -40,38 +40,6 @@ const RANGES: { key: WindowName; label: string }[] = [
   { key: "30d", label: "30d" },
   { key: "90d", label: "90d" },
 ];
-
-function Picker<T extends string>({
-  options,
-  value,
-  onChange,
-}: {
-  options: { key: T; label: string }[];
-  value: T;
-  onChange: (v: T) => void;
-}) {
-  return (
-    <div className="flex flex-wrap gap-1" role="tablist">
-      {options.map((o) => (
-        <button
-          key={o.key}
-          role="tab"
-          aria-selected={o.key === value}
-          onClick={() => onChange(o.key)}
-          className={cn(
-            "font-mono rounded-full px-3 py-1 text-[11px] tracking-wide transition-colors",
-            "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-(--accent)",
-            o.key === value
-              ? "bg-(--fg) text-(--bg)"
-              : "text-(--fg-2) hover:bg-(--bg-2)"
-          )}
-        >
-          {o.label}
-        </button>
-      ))}
-    </div>
-  );
-}
 
 interface ChartTooltipPayload {
   payload?: { time: string; min?: number; max?: number; avg?: number; sum?: number };
@@ -157,8 +125,14 @@ export function Trends({ snapshot }: { snapshot: Snapshot | null }) {
           options={METRICS.map((m) => ({ key: m.key, label: m.label }))}
           value={metric.key}
           onChange={setMetricKey}
+          label="Metric"
         />
-        <Picker options={RANGES} value={range} onChange={setRange} />
+        <Picker
+          options={RANGES}
+          value={range}
+          onChange={setRange}
+          label="Time range"
+        />
       </div>
 
       <div className="mt-5 h-64 w-full sm:h-72">
