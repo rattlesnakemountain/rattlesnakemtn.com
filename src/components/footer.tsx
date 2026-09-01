@@ -31,7 +31,7 @@ export function Footer({ width = "max-w-5xl" }: { width?: string }) {
           SOURCE
         </a>
         <span className="mx-2">·</span>
-        <a className="hover:text-(--accent)" href="https://cam.rattlesnakemtn.com/latest.jpg">
+        <a className="hover:text-(--accent)" href="https://cam.rattlesnakemtn.com/">
           CAMERA
         </a>
         <span className="mx-2">·</span>

@@ -13,13 +13,31 @@ Pages — there is no server component.
   `publish` command). Every object carries a `generated_at` stamp, which drives
   the recency labels.
 - **Webcam** — the annotated frame from
-  [rattlecam](https://cam.rattlesnakemtn.com/latest.jpg), fetched with a
-  cache-busting query and refreshed every five minutes.
+  [rattlecam](https://cam.rattlesnakemtn.com/). The host serves each frame
+  `no-cache, must-revalidate` behind an `ETag`, so the page fetches
+  `latest-web.jpg` (the web-sized cut, ~220 kB against 1.3 MB for the
+  full-resolution one) with **no query string**: an unchanged frame then costs
+  a revalidation of a few hundred bytes instead of a full transfer. To know
+  when a new frame exists, it polls `Last-Modified` with a HEAD on the
+  camera's ten-minute publish cadence and stamps the URL only then — which is
+  also where the caption's capture time comes from. Do not reintroduce a
+  cache-busting parameter; it makes every refresh a full download.
+- **Timelapse** — the `latest-{today,yesterday,weekly,monthly}[-daylight].mp4`
+  clips from the same host, in a `<video>` with `preload="metadata"` so the
+  heavier cuts (26.8 MB weekly, 52.1 MB monthly) cost nothing until someone
+  presses play. The host publishes no manifest, so the set is listed in
+  `src/components/timelapse.tsx`; each clip's weight and build time come from
+  a HEAD of the file itself rather than a hardcoded table. Note that
+  `latest-monthly` has no `-daylight` companion — night is already dropped
+  when it is assembled — so the lighting picker is hidden for that period.
+  The host also offers a GIF of every clip; they are larger and lower
+  resolution than the MP4s, and exist for `<img>`-only embedding.
 - **Snowpack** — the three nearest USDA SNOTEL sites, straight from the AWDB
   REST API.
 - **Forecast** — the mountain's NWS gridpoint, straight from api.weather.gov.
 
-All four are fetched from the visitor's browser; the tower only ever uploads.
+All of these are fetched from the visitor's browser; the tower only ever
+uploads.
 
 ## Analytics
 
