@@ -4,6 +4,7 @@ import { Webcam } from "@/components/webcam";
 import { Timelapse } from "@/components/timelapse";
 import { Conditions } from "@/components/conditions";
 import { Trends } from "@/components/trends";
+import { AirSection } from "@/components/air-section";
 import { SnotelSection } from "@/components/snotel-section";
 import { ForecastSection } from "@/components/forecast-section";
 import { Footer } from "@/components/footer";
@@ -29,6 +30,7 @@ export default function App() {
           <Trends snapshot={snapshot} />
         </>
       )}
+      <AirSection />
       <SnotelSection />
       <ForecastSection />
       <Footer />

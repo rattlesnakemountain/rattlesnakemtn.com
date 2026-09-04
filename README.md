@@ -12,6 +12,12 @@ Pages — there is no server component.
   (produced by [tempest-influxdb-api](https://github.com/michaelpeterswa/tempest-influxdb-api)'s
   `publish` command). Every object carries a `generated_at` stamp, which drives
   the recency labels.
+- **Air quality** — a second snapshot from the same bucket, republished every
+  five minutes from an AirGradient monitor on the tower:
+  `https://storage.googleapis.com/rm-main-p-hj56-tempest-weather/aqi/v1/snapshot.json`
+  (produced by [aqi-api](https://github.com/michaelpeterswa/aqi-api)'s
+  `publish` command). Particulates, CO₂ and the VOC/NOx indices come straight
+  from the monitor; the AQI is the EPA index over the trailing 24 hours.
 - **Webcam** — the annotated frame from
   [rattlecam](https://cam.rattlesnakemtn.com/). The host serves each frame
   `no-cache, must-revalidate` behind an `ETag`, so the page fetches
